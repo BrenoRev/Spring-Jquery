@@ -75,7 +75,8 @@ body {
 								<th scope="col">ID</th>
 								<th scope="col">Nome</th>
 								<th scope="col">Idade</th>
-								<th scope="col">Editar</th>
+								<th scope="col"></th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -153,7 +154,7 @@ body {
 					
 						 for(var p = 0; p < response.length; p++){
 $('#tabelaresultados > tbody').append('<tr><td>'+response[p].id+'</td><td>'+response[p].nome+
-'</td><td>'+response[p].idade+'</td><td><button type="button" class="btn btn-info" onclick="editar('+response[p].id+')">Editar</button></td></tr>');
+'</td><td>'+response[p].idade+'</td><td><button type="button" class="btn btn-info" onclick="editar('+response[p].id+')">Editar</button></td><td><button type="button" class="btn btn-danger" onclick="deletar('+response[p].id+')">Excluir</button></td></tr>');
 						  }
 				}
 			}).fail(function (xhr, status, errorThrown){
@@ -161,6 +162,24 @@ $('#tabelaresultados > tbody').append('<tr><td>'+response[p].id+'</td><td>'+resp
 			});
 			
 		}
+	}
+	
+	
+	function deletar(id){
+		if(window.confirm("Deseja realmente excluir o usuário?")){
+			$.ajax({
+				method: "DELETE",
+				url: "apagar",
+				data: "iduser=" + id,
+				success: function(response){
+					alert(response);
+					pesquisarUser();
+					}
+			}).fail(function (xhr, status, errorThrown){
+				alert("Erro ao deletar usuário por id: " + xhr.responseText);
+			});
+		}
+		
 	}
 	
 	function editar(id){

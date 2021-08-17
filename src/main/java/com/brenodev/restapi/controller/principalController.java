@@ -61,7 +61,7 @@ public class principalController {
 	
 	@DeleteMapping("apagar")
 	@ResponseBody
-	public ResponseEntity<String> delete(@RequestParam Long iduser){
+	public ResponseEntity<String> delete(@RequestParam(name="iduser") Long iduser){
 		
 		usuarioService.deleteById(iduser);
 		
