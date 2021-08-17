@@ -15,7 +15,7 @@ public class UsuarioServices {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
-	public Usuario save(Usuario usuario) {
+	public Usuario save(Usuario usuario) throws Exception {
 		return usuarioRepository.save(usuario);
 	}
 	

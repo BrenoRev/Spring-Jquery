@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
 
 import lombok.Data;
 
@@ -18,7 +21,10 @@ public class Usuario implements Serializable{
 	@Id
 	private Long id;
 	
+	@NotNull
+	@Size(min= 3, max=20)
 	private String nome;
 	
+	@NotNull
 	private int idade;
 }

@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +31,11 @@ public class principalController {
 	@ResponseBody
 	public ResponseEntity<Usuario> adicionar(@RequestBody Usuario usuario) {
 
-		usuarioService.save(usuario);
+			try {
+				usuarioService.save(usuario);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 		
@@ -65,9 +68,9 @@ public class principalController {
 		return new ResponseEntity<String>("Usuario deletado com sucesso",HttpStatus.OK);
 	}
 	
-	@GetMapping("buscarusuario/{iduser}")
+	@GetMapping("buscarusuario")
 	@ResponseBody
-	public ResponseEntity<Usuario> buscarId(@PathVariable Long iduser){
+	public ResponseEntity<Usuario> buscarId(@RequestParam(name ="iduser") Long iduser){
 		
 		Usuario user = usuarioService.findById(iduser).get();
 		
@@ -76,9 +79,9 @@ public class principalController {
 	
 	@GetMapping("buscarusuarionome")
 	@ResponseBody
-	public ResponseEntity<List<Usuario>> buscarNome(@RequestParam String nome){
+	public ResponseEntity<List<Usuario>> buscarNome(@RequestParam(name = "name") String name){
 		
-		List<Usuario> user = usuarioService.buscarPorNome(nome.trim().toLowerCase());
+		List<Usuario> user = usuarioService.buscarPorNome(name.trim().toLowerCase());
 		
 		return new ResponseEntity<List<Usuario>>(user, HttpStatus.OK); 
 	}
