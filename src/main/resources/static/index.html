@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Principal</title>
+ <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -13,13 +14,28 @@
 
 <style>
 body {
-	margin: 20%;
+	overflow: hidden;
+	margin: 10%;
+	margin-top: 10%;
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#fundo{
+width: 400px;
+height: calc(100%-30px);
+margin: auto;
+padding: 20px;
+	border-radius: 20px;
+	background-color: #817fff;
 }
 </style>
 </head>
 <body>
 <!-- Formulário -->
-	<h3>Spring Boot Rest API CRUD Completo</h3>
+	
+	<div id="fundo">
+	<h3>Spring Boot Rest API CRUD</h3>
 	<form action="" id="formCadastroUser" novalidate>
 		<div class="form-group col-mb-3">
 		<label for="exampleFormControlInput1">ID</label> 
@@ -37,12 +53,14 @@ body {
      		 </div>
 		</div>
 	</form>
-	
 	<br>
 	<!-- Buttons  -->
 		<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Cadastrar</button>
 		<button type="button" class="btn btn-secondary" onclick="limparForm()">Novo</button>
 		<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalPesquisarUser">Pesquisar</button>
+	</div>
+	
+	
 		
 		<!-- Modal -->
 	
