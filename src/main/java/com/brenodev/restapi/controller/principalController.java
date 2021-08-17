@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,15 +22,14 @@ public class principalController {
 	@Autowired
 	UsuarioServices usuarioService;
 	
-	@GetMapping("/{nome}")
-	@ResponseStatus(HttpStatus.OK)
-	public String greeting(@PathVariable String nome) {
-		
-		Usuario usuario = new Usuario();
-		usuario.setNome(nome);
+	@PostMapping("/adicionar")
+	@ResponseBody
+	public ResponseEntity<Usuario> greeting(@RequestBody Usuario usuario) {
+
 		usuarioService.save(usuario);
 		
-		return "Bem vindo " + nome;
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+		
 	}
 	
 	@GetMapping("/listatodos")
