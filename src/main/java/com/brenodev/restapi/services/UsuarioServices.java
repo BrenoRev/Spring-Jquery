@@ -34,4 +34,8 @@ public class UsuarioServices {
 	public Usuario atualizarById(Usuario usuario) {
 			return usuarioRepository.saveAndFlush(usuario);
 	}
+	
+	public List<Usuario> buscarPorNome(String nome) {
+		return usuarioRepository.buscarPorNome(nome);
+	}
 	}

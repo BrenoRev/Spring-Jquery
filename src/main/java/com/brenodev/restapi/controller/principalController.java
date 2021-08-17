@@ -74,4 +74,13 @@ public class principalController {
 		return new ResponseEntity<Usuario>(user, HttpStatus.OK); 
 	}
 	
+	@GetMapping("buscarusuarionome")
+	@ResponseBody
+	public ResponseEntity<List<Usuario>> buscarNome(@RequestParam String nome){
+		
+		List<Usuario> user = usuarioService.buscarPorNome(nome.trim().toLowerCase());
+		
+		return new ResponseEntity<List<Usuario>>(user, HttpStatus.OK); 
+	}
+	 
 }
