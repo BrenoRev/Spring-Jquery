@@ -28,7 +28,7 @@ public class principalController {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
-	@PostMapping("/adicionar")
+	@PostMapping("salvar")
 	@ResponseBody
 	public ResponseEntity<Usuario> adicionar(@RequestBody Usuario usuario) {
 
@@ -38,7 +38,7 @@ public class principalController {
 		
 	}
 	
-	@PutMapping("/atualizar")
+	@PutMapping("atualizar")
 	@ResponseBody
 	public ResponseEntity<?> atualizar(@RequestBody Usuario usuario) {
 		if(usuario.getId() == null) {
@@ -47,7 +47,7 @@ public class principalController {
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
-	@GetMapping("/listatodos")
+	@GetMapping("listatodos")
 	@ResponseBody // Retorna os dados para o corpo da resposta
 	public ResponseEntity<List<Usuario>> listaUsuario(){
 		
@@ -56,7 +56,7 @@ public class principalController {
 		return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK); /* Retorna a lista em JSON */
 	}
 	
-	@DeleteMapping("/apagar")
+	@DeleteMapping("apagar")
 	@ResponseBody
 	public ResponseEntity<String> delete(@RequestParam Long iduser){
 		
