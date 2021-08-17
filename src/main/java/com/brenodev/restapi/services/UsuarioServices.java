@@ -1,6 +1,7 @@
 package com.brenodev.restapi.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,4 +26,12 @@ public class UsuarioServices {
 	public void deleteById(Long id) {
 		usuarioRepository.deleteById(id);
 	}
-}
+	
+	public Optional<Usuario> findById(Long id) {
+		return usuarioRepository.findById(id);
+	}
+	
+	public Usuario atualizarById(Usuario usuario) {
+			return usuarioRepository.saveAndFlush(usuario);
+	}
+	}
