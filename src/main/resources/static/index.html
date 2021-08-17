@@ -119,6 +119,16 @@ body {
 		
 		var idade = $("#idade").val();
 		
+		if(nome == null || nome != null && nome.trim() == ''){
+			alert('Informe o nome')
+			return;
+		}
+		
+		if(idade == null || idade != null && idade.trim() == ''){
+			alert('Informe a idade')
+			return;
+		}
+		
 		$.ajax({
 			method: "POST",
 			url: "salvar",
